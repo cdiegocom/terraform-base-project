@@ -1,9 +1,9 @@
 provider "aws" {
-    region = "us-east-1"
+    region = "ca-central-1"
 }
 
 resource "aws_instance" "db" {
-    ami = "ami-0b55b3040fb5668a3"
+    ami = "ami-08675d67997ded61d"
     instance_type = "t3.micro"
 
     tags = {
@@ -12,19 +12,8 @@ resource "aws_instance" "db" {
 }
 
 resource "aws_instance" "web" {
-    ami = "ami-0b55b3040fb5668a3"
+    ami = "ami-08675d67997ded61d"
     instance_type = "t3.micro"
 
     depends_on = [aws_instance.db]
-}
-
-data "aws_instance" "dbsearch" {
-	filter {
-		name = "tag:Name"
-		values = [ "DB Server" ]
-	}
-}
-
-output "dbservers" {
-	value = data.aws_instance.dbsearch.availability_zone
 }

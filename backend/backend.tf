@@ -1,7 +1,9 @@
 terraform {
     backend "s3" {
         key = "terraform/tfstate.tfstate"
-        bucket = "myremotebackendcdcp"
-        region = "ca-central-1"
+        bucket = "xxxxxx"
+        region = "us-east-1"
+        access_key = "xxxx"
+        secret_key = "xxx"
     }
 }
